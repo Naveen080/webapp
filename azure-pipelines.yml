@@ -29,3 +29,12 @@ steps:
   inputs:
     artifactName: 'war'
     pathToPublish: '$(build.artifactStagingDirectory)'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure for Students (644ee53b-e56c-43c8-867e-7b94e16142ea)'
+        appType: 'webAppLinux'
+        WebAppName: 'miser'
+        packageForLinux: '$(build.artifactStagingDirectory)/**/*.war'
+        RuntimeStack: 'TOMCAT|9.0-jre8'
+
